@@ -19,7 +19,7 @@ const StyleInput = styled.input`
 
 const StyledHeader = styled.h1`
     text-align: center;
-    font-size: 30px;
+    font-size: 50px;
     margin-top: 10%;
     margin-bottom: 2%;
 `

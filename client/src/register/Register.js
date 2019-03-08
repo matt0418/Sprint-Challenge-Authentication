@@ -1,6 +1,39 @@
 import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import styled from 'styled-components'
+
+const FormStyle = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+`
+
+const StyleInput = styled.input`
+    width: 35%;
+    margin-bottom: 2%;
+    padding: 1% .5%;
+    font-size: 24px;
+`
+
+const StyledHeader = styled.h1`
+    text-align: center;
+    font-size: 50px;
+    margin-top: 10%;
+    margin-bottom: 2%;
+`
+
+const StyledButton = styled.button`
+    width: 10%;
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 20px;
+    font-weight: bold;
+`
 
 class Register extends React.Component {
     state = {
@@ -35,10 +68,10 @@ class Register extends React.Component {
     render() {
         return(
             <div>
-                <h1>Register</h1>
-                <form onSubmit={this.handleSubmit}>
+                <StyledHeader>Register</StyledHeader>
+                <FormStyle onSubmit={this.handleSubmit}>
                     <label htmlFor='username'/>
-                        <input 
+                        <StyleInput 
                         name='username'
                         id='username'
                         value={this.state.username}
@@ -46,15 +79,15 @@ class Register extends React.Component {
                         type='text'
                         />
                     <label htmlFor='password'/>
-                        <input 
+                        <StyleInput 
                         name='password'
                         id='password'
                         value={this.state.password}
                         onChange={this.handleChanges}
                         type='text'
                         />
-                    <button type="submit">Register</button>
-                </form>
+                    <StyledButton type="submit">Register</StyledButton>
+                </FormStyle>
             </div>
         )
     }

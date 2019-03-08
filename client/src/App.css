@@ -1,0 +1,13 @@
+
+.naver a {
+  margin-right: 3%;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.login a {
+  text-decoration: none;
+  color: black;
+}

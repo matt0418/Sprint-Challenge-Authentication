@@ -1,64 +1,64 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-class Login extends React.Component {
-
+class Register extends React.Component {
     state = {
         username: '',
         password: ''
     }
 
     handleChanges = e => {
-        const {name, value} = e.target
+        const { name, value } = e.target
         this.setState({ [name]: value })
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        const endpoint = 'http://localhost:3300/api/login'
+        console.log('inside handle')
+        const endpoint = 'http://localhost:3300/api/register'
         axios
             .post(endpoint, this.state)
             .then(res => {
-                console.log(res)
-                localStorage.setItem('jwt', res.data.token)
+                console.log('inside then')
+                this.setState({
+                    username: res.data.username,
+                    password: res.data.password
+                })
             })
-            .catch(err => {
-                console.log(err)
+            .catch(error => {
+                console.log(error)
             })
         this.props.history.push('/')
     }
-
+    
     render() {
         return(
             <div>
-                <h1>Login</h1>
+                <h1>Register</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='username' />
+                    <label htmlFor='username'/>
                         <input 
                         name='username'
                         id='username'
                         value={this.state.username}
-                        type='text'
                         onChange={this.handleChanges}
+                        type='text'
                         />
-                    <label htmlFor='password' />
+                    <label htmlFor='password'/>
                         <input 
                         name='password'
                         id='password'
                         value={this.state.password}
-                        type='password'
                         onChange={this.handleChanges}
+                        type='text'
                         />
-                    <button type="submit">Login</button>
+                    <button type="submit">Register</button>
                 </form>
-                <div>
-                    <h3>First Time Here?</h3>
-                    <Link to='/register'>Register Here</Link>
-                </div>
             </div>
         )
     }
+
 }
 
-export default withRouter(Login)
+export default withRouter(Register)

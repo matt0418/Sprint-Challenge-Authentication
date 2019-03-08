@@ -87,16 +87,16 @@ class Login extends React.Component {
                         name='username'
                         id='username'
                         value={this.state.username}
-                        type='text'
                         onChange={this.handleChanges}
+                        type='text'
                         />
                     <label htmlFor='password' />
                         <StyleInput 
                         name='password'
                         id='password'
                         value={this.state.password}
-                        type='password'
                         onChange={this.handleChanges}
+                        type='password'
                         />
                     <StyledButton type="submit">Login</StyledButton>
                 </FormStyle>

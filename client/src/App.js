@@ -15,14 +15,28 @@ const NavBar = styled.div`
   background: green;
 `
 
+const StyledLogout = styled.p`
+  margin-right: 3%;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+`
+
 
 class App extends Component {
+
+  logout = () => {
+    localStorage.removeItem('jwt')
+  }
+
   render() {
     return (
       <div>
         <NavBar className='naver'>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/register'>Register</NavLink>
+          {localStorage.getItem('jwt') ? <NavLink to='/' onClick={this.logout}>Logout</NavLink> : <div></div> }
         </NavBar>
         <div className="App">
           <Route exact path='/' component={Jokes}/>
@@ -34,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

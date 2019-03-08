@@ -26,13 +26,14 @@ class Login extends React.Component {
             .catch(err => {
                 console.log(err)
             })
+        this.props.history.push('/')
     }
 
     render() {
         return(
             <div>
                 <h1>Login</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username' />
                         <input 
                         name='username'
@@ -49,6 +50,7 @@ class Login extends React.Component {
                         type='password'
                         onChange={this.handleChanges}
                         />
+                    <button type="submit">Login</button>
                 </form>
             </div>
         )

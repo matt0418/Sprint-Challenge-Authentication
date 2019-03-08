@@ -25,8 +25,27 @@ async function register(req, res) {
   }
 }
 
-function login(req, res) {
-  // implement user login
+async function login(req, res) {
+  let {username, password} = req.body
+  if (username && password) {
+    try {
+      const login = await Users.findBy({ username }).first()
+      if (login && bcrypt.compareSync(password, login.password)) {
+        const token = generateToken(login)
+        res.status(200).json({
+          message: 'Hello!',
+          token
+        })
+      } else {
+        res.status(401).json({ message: "Get rekt" })
+      }
+    } catch(error) {
+      console.log(error)
+      res.status(500).json(error)
+    }
+  } else {
+    res.send({ message: 'please provide credentials' })
+  }
 }
 
 function getJokes(req, res) {
